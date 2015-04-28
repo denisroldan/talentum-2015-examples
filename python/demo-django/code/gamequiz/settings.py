@@ -76,6 +76,8 @@ WSGI_APPLICATION = 'gamequiz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# Superadmin credentials
+# admin:admin
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
