@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = BASE_DIR
 
 
 # Quick-start development settings - unsuitable for production
@@ -104,3 +105,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATIC_ROOT = PROJECT_ROOT + 'static/'
+STATICFILES_DIRS = (PROJECT_ROOT + '/static', )
