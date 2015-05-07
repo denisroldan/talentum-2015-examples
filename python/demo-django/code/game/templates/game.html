@@ -8,7 +8,6 @@
                 <label for="{{ forloop.counter }}">{{ opcion }}</label>
             </p>
         {% endfor %}
-        <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
         {% csrf_token %}
           <div class="center"><button class="btn waves-effect waves-light" type="submit" name="action">Enviar
               <i class="mdi-content-send right"></i>

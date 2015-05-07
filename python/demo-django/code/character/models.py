@@ -4,7 +4,7 @@ from game.models import Game
 
 class Character(models.Model):
     name = models.CharField(max_length=250)
-    game = models.ManyToManyField(Game, related_name='games')
+    game = models.ManyToManyField(Game, related_name='characters')
 
     def __unicode__(self):
         return "{0}".format(self.name)

@@ -5,20 +5,22 @@ from django.template import loader, RequestContext
 from character.models import Character
 from game.models import Game
 from django.db import models
-from random import shuffle
+from random import shuffle, choice
+from gamequiz.functions import setAnswerCache, solveChallengeCache
 
 
 def getChallenge(request):
 	t = loader.get_template('game.html')
-	result = gameWithCharChallenge(request)
+	possible_challenges = [gameWithCharChallenge(request), charWithGameChallenge(request)]
+	result = choice(possible_challenges)
 	c = RequestContext(request, result)
 	return HttpResponse(t.render(c))
 
 
 def solveChallenge(request):
 	result = "KO"
-	if 'answer' in request.POST and 'correct_answer' in request.POST:
-		if request.POST['answer'] == request.POST['correct_answer']:
+	if 'answer' in request.POST:
+		if solveChallengeCache(request.POST['answer'], request.user.id):
 			result = "OK"
 	t = loader.get_template('solve.html')
 	c = RequestContext(request, {'result': result})
@@ -39,5 +41,23 @@ def gameWithCharChallenge(request, difficulty=1):
 	names.append(correct_answer_game.name)  # Añadimos la respuesta correcta
 	shuffle(names)  # Reordenamos las respuestas para que no siempre quede en último lugar la correcta
 	# Creamos un diccionario de respuesta
-	response = {'question': q, 'answers': names, 'correct_answer': correct_answer_game.name}
+	response = {'question': q, 'answers': names}
+	# Guardo en caché el resultado esperado
+	setAnswerCache(correct_answer_game.name, request.user.id)
+	return response
+
+def charWithGameChallenge(request, difficulty=1):
+	# Elegir un juego al azar que tenga al menos
+	selected_game = Game.objects.annotate(n_games=models.Count('characters')).filter(n_games__gte=1).order_by('?').first()
+	possible_correct_chars = selected_game.characters.all().order_by('?')
+	correct_answer_char = possible_correct_chars.first()
+	incorrect_chars = Character.objects.exclude(id__in=possible_correct_chars)[:difficulty+1]
+	q = u"¿Qué personaje pertenece a " + selected_game.name + "?"
+	names = []
+	for char in incorrect_chars:
+		names.append(char.name)
+	names.append(correct_answer_char.name)
+	shuffle(names)
+	response = {'question': q, 'answers': names}
+	setAnswerCache(correct_answer_char.name, request.user.id)
 	return response

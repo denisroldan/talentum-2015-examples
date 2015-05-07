@@ -6,7 +6,7 @@ def setAnswerCache(answer, id, timeout=100):
 	cache.set(id, answer, timeout)
 
 
-def solveChallenge(answer, id):
+def solveChallengeCache(answer, id):
 	result = False
 	if cache.get(id) == answer:
 		result = True
