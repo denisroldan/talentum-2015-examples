@@ -1,0 +1,197 @@
+[
+  {
+    "fields": {
+      "name": "Street Fighter"
+    },
+    "model": "game.game",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "name": "Final Fantasy VII"
+    },
+    "model": "game.game",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "name": "GTA V"
+    },
+    "model": "game.game",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "name": "Metal Gear Solid"
+    },
+    "model": "game.game",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "name": "Half-Life"
+    },
+    "model": "game.game",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "game": [
+        1
+      ],
+      "name": "Ryu"
+    },
+    "model": "character.character",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "game": [
+        1
+      ],
+      "name": "Guile"
+    },
+    "model": "character.character",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "game": [
+        1
+      ],
+      "name": "Akuma"
+    },
+    "model": "character.character",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "game": [
+        1
+      ],
+      "name": "Balrog"
+    },
+    "model": "character.character",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "game": [
+        2
+      ],
+      "name": "Cloud"
+    },
+    "model": "character.character",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "game": [
+        2
+      ],
+      "name": "Barret"
+    },
+    "model": "character.character",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "game": [
+        2
+      ],
+      "name": "Aeris"
+    },
+    "model": "character.character",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "game": [
+        2
+      ],
+      "name": "Red XIII"
+    },
+    "model": "character.character",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "game": [
+        2
+      ],
+      "name": "Sephiroth"
+    },
+    "model": "character.character",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "game": [
+        3
+      ],
+      "name": "Michael"
+    },
+    "model": "character.character",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "game": [
+        3
+      ],
+      "name": "Trevor"
+    },
+    "model": "character.character",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "game": [
+        3
+      ],
+      "name": "Franklin"
+    },
+    "model": "character.character",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "game": [
+        4
+      ],
+      "name": "Snake"
+    },
+    "model": "character.character",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "game": [
+        4
+      ],
+      "name": "Ocelot"
+    },
+    "model": "character.character",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "game": [
+        4
+      ],
+      "name": "Meryl"
+    },
+    "model": "character.character",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "game": [
+        5
+      ],
+      "name": "Gordon Freeman"
+    },
+    "model": "character.character",
+    "pk": 16
+  }
+]
