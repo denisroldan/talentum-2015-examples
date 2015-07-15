@@ -24,7 +24,7 @@ PROJECT_ROOT = BASE_DIR
 SECRET_KEY = '@p=n3c$ig655+!p5ziwfb@r@@0=b4=2hkzhvws$w5%x4y(2+=^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -80,12 +80,13 @@ WSGI_APPLICATION = 'gamequiz.wsgi.application'
 # Superadmin credentials
 # admin:admin
 DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-	}
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'quiz',  # Or path to database file if using sqlite3.
+        'USER': 'root',  # Not used with sqlite3.
+        'PASSWORD': 'admin',
+    }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -105,9 +106,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = PROJECT_ROOT + 'static/'
-STATICFILES_DIRS = (PROJECT_ROOT + '/static', )
-
 CACHES = {
 	"default": {
 		"BACKEND": "django_redis.cache.RedisCache",
@@ -117,3 +115,7 @@ CACHES = {
 		}
 	}
 }
+STATICFILES_DIRS = (PROJECT_ROOT + '/static', )
+
+MEDIA_ROOT = '/var/apps/quiz/media'
+STATIC_ROOT = '/var/apps/quiz/static'
